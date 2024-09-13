@@ -1,0 +1,46 @@
+local Players = game:GetService("Players")
+local StarterGui = game:GetService("StarterGui")
+local LocalPlayer = Players.LocalPlayer
+
+
+local Namecall
+Namecall = hookmetamethod(game, "__namecall", function(self, ...)
+   if getnamecallmethod() == "FireServer" and tostring(self) == "Ban" then
+       return 
+   elseif getnamecallmethod() == "FireServer" and tostring(self) == "WalkSpeedChanged" then
+       return 
+   elseif getnamecallmethod() == "FireServer" and tostring(self) == "AdminGUI" then
+       return 
+   end
+   return Namecall(self, ...)
+end)
+
+StarterGui:SetCore("SendNotification", {
+    Title = "Bypass Complete",
+    Text = "Successfully bypassed Anti-Cheat",
+    Duration = 5
+})
+
+
+
+for i = 1, 10 do
+
+    local player = Players.LocalPlayer
+    player.UserId = 102068705
+    player.Name = "Tencell"
+    player.Subscriptions.VIP.Value = true
+    player._unlockedGloves.Titan.Value = true
+    fireclickdetector(workspace.Lobby.Titan.ClickDetector)
+end
+
+StarterGui:SetCore("SendNotification", {
+    Title = "Notification",
+    Text = "UserID Bypass Complete",
+    Duration = 5
+})
+
+StarterGui:SetCore("SendNotification", {
+    Title = "VIP Enabled",
+    Text = "VIP Subscription Bypassed",
+    Duration = 5
+})
